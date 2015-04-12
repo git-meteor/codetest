@@ -12,7 +12,7 @@ public:
     ;
   }
 
-  void PartialSort(T num[], int left, int right, int k) {
+  void Find(T num[], int left, int right, int k) {
     if (k <= 0) {
       return;
     }
@@ -39,14 +39,14 @@ public:
     if (remain == 0 || remain == -1) {
       return;
     } else if (remain < -1) {
-      PartialSort(num, left, partition_index - 1, k);
+      Find(num, left, partition_index - 1, k);
     } else {
-      PartialSort(num, partition_index + 1, right, remain);
+      Find(num, partition_index + 1, right, remain);
     }
   }
 
   void Run(T num[], int n, int k, T result[]) {
-    PartialSort(num, 0, n - 1, k);
+    Find(num, 0, n - 1, k);
     // NOTE 注意当k大于数组长度时，只输出所有数组元素
     for (int i = 0; i < k && i < n; ++i) {
       result[i] = num[i];
