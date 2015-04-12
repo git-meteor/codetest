@@ -2,79 +2,80 @@
 #include <assert.h>
 
 template<typename T, class PivotSelector, class Partitioner> class QuickSort {
-	PivotSelector pivot_selector_;
-	Partitioner partitioner_;
+  PivotSelector pivot_selector_;
+  Partitioner partitioner_;
 
 public:
-	QuickSort() {;}
+  QuickSort() {
+    ;
+  }
 
-	void Sort(T num[], int left, int right){
-		if(left < right){
-			int pivot_index = pivot_selector_(num, left, right);
+  void Sort(T num[], int left, int right) {
+    if (left < right) {
+      int pivot_index = pivot_selector_(num, left, right);
 
-			std::swap(num[pivot_index], num[right]);
-			int partition_index = partitioner_(num, left, right - 1, num[right]);
+      std::swap(num[pivot_index], num[right]);
+      int partition_index = partitioner_(num, left, right - 1, num[right]);
 
-			std::swap(num[partition_index], num[right]);
-			Sort(num, left, partition_index - 1);
-			Sort(num, partition_index + 1, right);
-		}
-	}
+      std::swap(num[partition_index], num[right]);
+      Sort(num, left, partition_index - 1);
+      Sort(num, partition_index + 1, right);
+    }
+  }
 
-	void Run(T num[], int n) {
-		Sort(num, 0, n - 1);
-	}
+  void Run(T num[], int n) {
+    Sort(num, 0, n - 1);
+  }
 };
 
-class QuickSortTest : public TestCase  {
-	virtual void Test(){
-		QuickSort<int, MedianSelector<int>, NormalPartitioner<int> > sorter;
+class QuickSortTest: public TestCase {
+  virtual void Test() {
+    QuickSort<int, MedianSelector<int>, NormalPartitioner<int> > sorter;
 //		QuickSort<int> sorter;
 
-		srand(12345);
-		int test_count = 10;
-		int max_array_size = 10;
-		for(int i = 0; i < test_count; ++i){
-			for(int j = 1; j <= max_array_size; ++j){
-				int array_size = j;
-				int* a = new int[array_size];
+    srand(12345);
+    int test_count = 10;
+    int max_array_size = 10;
+    for (int i = 0; i < test_count; ++i) {
+      for (int j = 1; j <= max_array_size; ++j) {
+        int array_size = j;
+        int* a = new int[array_size];
 
-				for(int k = 0; k < array_size; ++k){
-					a[k] = rand() % array_size;
-				}
+        for (int k = 0; k < array_size; ++k) {
+          a[k] = rand() % array_size;
+        }
 
-				std::cout << "Before sort: ";
-				Print(a, array_size);
-				sorter.Run(a, array_size);
-				std::cout << "After sort: ";
-				Print(a, array_size);
-				assert(IsSorted(a, array_size));
+        std::cout << "Before sort: ";
+        Print(a, array_size);
+        sorter.Run(a, array_size);
+        std::cout << "After sort: ";
+        Print(a, array_size);
+        assert(IsSorted(a, array_size));
 
-				delete a;
-			}
-		}
-	}
+        delete a;
+      }
+    }
+  }
 
-	bool IsSorted(int num[], int n){
-		if(n == 1){
-			return true;
-		}
+  bool IsSorted(int num[], int n) {
+    if (n == 1) {
+      return true;
+    }
 
-		for(int i = 1; i < n; ++i){
-			if(num[i] < num[i-1]){
-				return false;
-			}
-		}
+    for (int i = 1; i < n; ++i) {
+      if (num[i] < num[i - 1]) {
+        return false;
+      }
+    }
 
-		return true;
-	}
+    return true;
+  }
 
-	void Print(int num[], int n){
-		for(int i = 0; i < n; ++i){
-			std::cout << num[i] << " ";
-		}
-		std::cout << std::endl;
-	}
+  void Print(int num[], int n) {
+    for (int i = 0; i < n; ++i) {
+      std::cout << num[i] << " ";
+    }
+    std::cout << std::endl;
+  }
 };
-
 
