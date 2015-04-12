@@ -10,7 +10,7 @@ int main(int argc, char* argv[]){
 
 	TestCase* test_case_array[] = {
 //			new BinarySearch,
-			new QuickSort,
+			new QuickSortTest,
 	};
 
 
