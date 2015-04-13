@@ -15,7 +15,8 @@ public:
       int pivot_index = pivot_selector_(num, left, right);
 
       std::swap(num[pivot_index], num[right]);
-      int partition_index = partitioner_(num, left, right - 1, num[right]);
+      PivotCondition<T> condition(num[right]);
+      int partition_index = partitioner_(num, left, right - 1, condition);
 
       std::swap(num[partition_index], num[right]);
       Sort(num, left, partition_index - 1);

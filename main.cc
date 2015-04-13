@@ -5,6 +5,7 @@
 #include "BinarySearch.h"
 #include "QuickSort.h"
 #include "SmallestKNumbers.h"
+#include "OddBeforeEven.h"
 #include "SelectKth.h"
 
 #include "SearchRotateArray.h"
@@ -15,7 +16,8 @@ int main(int argc, char* argv[]) {
 //			new BinarySearch,
 //			new QuickSortTest,
 //      new SmallestKNumbersTest,
-      new SelectKthTest,
+//      new SelectKthTest,
+      new OddBeforeEvenTest,
   };
 
   size_t size = sizeof(test_case_array) / sizeof(TestCase*);
