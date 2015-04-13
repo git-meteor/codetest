@@ -13,11 +13,12 @@
 int main(int argc, char* argv[]) {
 
   TestCase* test_case_array[] = {
-			new BinarySearchTest,
-//			new QuickSortTest,
-//      new SmallestKNumbersTest,
-//      new SelectKthTest,
-//      new OddBeforeEvenTest,
+//			new BinarySearchTest,
+			new QuickSortTest,
+      new SmallestKNumbersTest,
+      new SelectKthTest,
+      new OddBeforeEvenTest,
+			new PartitionTest,
   };
 
   size_t size = sizeof(test_case_array) / sizeof(TestCase*);

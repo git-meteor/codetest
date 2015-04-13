@@ -50,13 +50,6 @@ public:
     return -1;
   }
 
-  void PrintArray(int nums[], int n) {
-    for (int i = 0; i < n; ++i) {
-      std::cout << nums[i] << " ";
-    }
-    std::cout << std::endl;
-  }
-
   void Test() {
     {
       int nums[] = { 4, 5, 6, 7, 1, 2, 3 };

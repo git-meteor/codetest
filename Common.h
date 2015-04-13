@@ -66,11 +66,49 @@ public:
   }
 };
 
+template<typename T> class NormalPartitioner2 {
+public:
+  template<typename Condition> int operator()(T num[], int left, int right, Condition condition) {
+    int i = left;
+    int j = left;
+
+    int flag = 0;
+    while(j <= right){
+      if(condition(num[j]) < 0 || (condition(num[j]) == 0 && (flag ^= 1) == 1)){
+        std::swap(num[i], num[j]);
+        ++i;
+      }
+      ++j;
+    }
+
+    return i;
+  }
+};
+
+void PrintArray(int nums[], int n) {
+  for (int i = 0; i < n; ++i) {
+    std::cout << nums[i] << " ";
+  }
+  std::cout << std::endl;
+}
 class TestCase {
 public:
   virtual void Test() = 0;
   virtual ~TestCase() {
     ;
+  }
+};
+
+class PartitionTest : public TestCase {
+public:
+  virtual void Test() {
+    {
+      int a[] = { 2, 5, 8, 9, 6, 5, 3, 5, 7, 5};
+      NormalPartitioner2<int> partitioner;
+      int partition_index = partitioner(a, 0, ARRAY_SIZE(a) - 1, PivotCondition<int>(5));
+      std::cout << "partition_index: " << partition_index << std::endl;
+      PrintArray(a, ARRAY_SIZE(a));
+    }
   }
 };
 

@@ -13,7 +13,7 @@ public:
 
 class OddBeforeEvenTest: public TestCase {
   virtual void Test() {
-    OddBeforeEven<int, NormalPartitioner<int> > swapper;
+    OddBeforeEven<int, NormalPartitioner2<int> > swapper;
 
     srand(12345);
     int test_count = 10;
@@ -29,11 +29,11 @@ class OddBeforeEvenTest: public TestCase {
         }
 
         std::cout << "Array: ";
-        Print(a, array_size);
+        PrintArray(a, array_size);
 
         int partition_index = swapper.Run(a, array_size);
         std::cout << "Array after swap: ";
-        Print(a, array_size);
+        PrintArray(a, array_size);
 
         for(int i = 0; i < partition_index; ++i){
           assert((a[i] & 1) != 0);
@@ -48,13 +48,6 @@ class OddBeforeEvenTest: public TestCase {
         std::cout << std::endl;
       }
     }
-  }
-
-  void Print(int num[], int n) {
-    for (int i = 0; i < n; ++i) {
-      std::cout << num[i] << " ";
-    }
-    std::cout << std::endl;
   }
 };
 

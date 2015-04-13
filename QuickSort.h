@@ -31,7 +31,7 @@ public:
 
 class QuickSortTest: public TestCase {
   virtual void Test() {
-    QuickSort<int, MedianSelector<int>, NormalPartitioner<int> > sorter;
+    QuickSort<int, MedianSelector<int>, NormalPartitioner2<int> > sorter;
 //		QuickSort<int> sorter;
 
     srand(12345);
@@ -47,10 +47,10 @@ class QuickSortTest: public TestCase {
         }
 
         std::cout << "Before sort: ";
-        Print(a, array_size);
+        PrintArray(a, array_size);
         sorter.Run(a, array_size);
         std::cout << "After sort: ";
-        Print(a, array_size);
+        PrintArray(a, array_size);
         assert(IsSorted(a, array_size));
 
         delete a;
@@ -70,13 +70,6 @@ class QuickSortTest: public TestCase {
     }
 
     return true;
-  }
-
-  void Print(int num[], int n) {
-    for (int i = 0; i < n; ++i) {
-      std::cout << num[i] << " ";
-    }
-    std::cout << std::endl;
   }
 };
 

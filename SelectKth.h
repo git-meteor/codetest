@@ -48,7 +48,7 @@ public:
 
 class SelectKthTest: public TestCase {
   virtual void Test() {
-    SelectKth<int, MedianSelector<int>, NormalPartitioner<int> > finder;
+    SelectKth<int, MedianSelector<int>, NormalPartitioner2<int> > finder;
 
     srand(12345);
     int test_count = 10;
@@ -64,7 +64,7 @@ class SelectKthTest: public TestCase {
         }
 
         std::cout << "Array: ";
-        Print(a, array_size);
+        PrintArray(a, array_size);
 
         std::vector<int> ref_sorted_array(a, a + array_size);
         std::sort(ref_sorted_array.begin(), ref_sorted_array.end());
@@ -88,13 +88,6 @@ class SelectKthTest: public TestCase {
         std::cout << std::endl;
       }
     }
-  }
-
-  void Print(int num[], int n) {
-    for (int i = 0; i < n; ++i) {
-      std::cout << num[i] << " ";
-    }
-    std::cout << std::endl;
   }
 };
 
