@@ -17,8 +17,8 @@ int main(int argc, char* argv[]) {
 			new QuickSortTest,
       new SmallestKNumbersTest,
       new SelectKthTest,
-      new OddBeforeEvenTest,
-			new PartitionTest,
+//      new OddBeforeEvenTest,
+//			new PartitionTest,
   };
 
   size_t size = sizeof(test_case_array) / sizeof(TestCase*);

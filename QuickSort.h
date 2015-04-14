@@ -31,7 +31,7 @@ public:
 
 class QuickSortTest: public TestCase {
   virtual void Test() {
-    QuickSort<int, MedianSelector<int>, NormalPartitioner2<int> > sorter;
+    QuickSort<int, Median3Selector<int>, NormalPartitioner2<int> > sorter;
 //		QuickSort<int> sorter;
 
     srand(12345);

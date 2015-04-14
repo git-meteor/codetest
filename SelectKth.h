@@ -48,7 +48,7 @@ public:
 
 class SelectKthTest: public TestCase {
   virtual void Test() {
-    SelectKth<int, MedianSelector<int>, NormalPartitioner2<int> > finder;
+    SelectKth<int, Median3Selector<int>, NormalPartitioner2<int> > finder;
 
     srand(12345);
     int test_count = 10;

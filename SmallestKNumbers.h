@@ -57,7 +57,7 @@ public:
 
 class SmallestKNumbersTest: public TestCase {
   virtual void Test() {
-    SmallestKNumbers<int, MedianSelector<int>, NormalPartitioner2<int> > finder;
+    SmallestKNumbers<int, Median3Selector<int>, NormalPartitioner2<int> > finder;
 //		QuickSort<int> sorter;
 
     srand(12345);

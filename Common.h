@@ -5,11 +5,28 @@
 
 template<typename T> class MedianSelector {
 public:
-  MedianSelector() {
-    ;
-  }
   int operator()(T num[], int left, int right) {
     return (left + right) >> 1;
+  }
+};
+
+template<typename T> class Median3Selector {
+public:
+  int operator()(T num[], int left, int right) {
+    int mid = (left + right) / 2;
+    if(num[left] > num[mid]){
+      std::swap(num[left], num[mid]);
+    }
+
+    if(num[mid] > num[right]){
+      std::swap(num[mid], num[right]);
+    }
+
+    if(num[left] > num[mid]){
+      std::swap(num[left], num[mid]);
+    }
+
+    return mid;
   }
 };
 
