@@ -7,6 +7,7 @@
 #include "SmallestKNumbers.h"
 #include "OddBeforeEven.h"
 #include "SelectKth.h"
+#include "InsertionSort.h"
 
 #include "SearchRotateArray.h"
 
@@ -14,11 +15,12 @@ int main(int argc, char* argv[]) {
 
   TestCase* test_case_array[] = {
 //			new BinarySearchTest,
-			new QuickSortTest,
-      new SmallestKNumbersTest,
-      new SelectKthTest,
+//			new QuickSortTest,
+//      new SmallestKNumbersTest,
+//      new SelectKthTest,
 //      new OddBeforeEvenTest,
 //			new PartitionTest,
+      new InsertionSortTest,
   };
 
   size_t size = sizeof(test_case_array) / sizeof(TestCase*);
