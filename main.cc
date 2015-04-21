@@ -9,6 +9,7 @@
 #include "SelectKth.h"
 #include "InsertionSort.h"
 #include "ShellSort.h"
+#include "MergeSort.h"
 
 #include "SearchRotateArray.h"
 
@@ -24,7 +25,8 @@ int main(int argc, char* argv[]) {
 //      new InsertionSortTest,
 //      new SortTest<QuickSort<int, Median3Selector<int>, NormalPartitioner2<int> > >,
 //      new SortTest<InsertionSort<int> >,
-      new SortTest<ShellSort<int> >,
+//      new SortTest<ShellSort<int> >,
+      new SortTest<MergeSort<int> >,
   };
 
   size_t size = sizeof(test_case_array) / sizeof(TestCase*);
