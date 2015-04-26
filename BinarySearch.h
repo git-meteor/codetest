@@ -1,27 +1,72 @@
 #include "Common.h"
 #include <assert.h>
 
-class BinarySearch{
+
+template<typename T> class ArrayDataGetter {
+  const T* nums_;
 public:
-  int Run(int num[], int n, int v) {
-    if (!num || n <= 0) {
-      return -1;
+  ArrayDataGetter(T nums[]) : nums_(nums){;}
+  const T& operator()(int index) const{
+    return nums_[index];
+  }
+};
+
+
+template<typename T, typename DataGetter> class ValueCondition {
+  const T& target_;
+  const DataGetter& getter_;
+public:
+
+
+//  template<typename T, typename DataGetter> static ValueCondition Create(const T& target, const DataGetter& getter){
+//    return ValueCondition<T, DataGetter>(target, getter);
+//  }
+
+  ValueCondition(const T& target, const DataGetter& getter) : target_(target), getter_(getter) {;}
+  int operator()(int index) const {
+    return target_ - getter_(index);
+  }
+};
+
+template<typename T, typename DataGetter> static ValueCondition<T, DataGetter> CreateValueCondition(const T& target, const DataGetter& getter){
+  return ValueCondition<T, DataGetter>(target, getter);
+}
+
+template<typename T> class BinarySearchBase{
+public:
+  template<typename Condition> int Search(int n, Condition& condition, bool return_insert_pos = false) {
+    if(n <= 0){
+      return return_insert_pos ? 0 : -1;
     }
 
     int left = 0;
     int right = n - 1;
-    while (left <= right) {
+    while(left <= right){
       int mid = (left + right) >> 1;
-      if (v < num[mid]) {
-        right = mid - 1;
-      } else if (v > num[mid]) {
-        left = mid + 1;
-      } else {
+      if(condition(mid) == 0){
         return mid;
+      } else if(condition(mid) < 0){
+        right = mid - 1;
+      } else {
+        left = mid + 1;
       }
     }
 
-    return -1;
+    return return_insert_pos ? left : -1;
+
+  }
+};
+
+
+template<typename T> class BinarySearch : private BinarySearchBase<T>{
+public:
+  int Run(T nums[], int n, T target) {
+    if(!nums){
+      return -1;
+    }
+
+    ArrayDataGetter<T> getter(nums);
+    return Search(n, CreateValueCondition(target, getter));
   }
 };
 
@@ -30,7 +75,7 @@ public:
 
   virtual void Test() {
 
-    BinarySearch search;
+    BinarySearch<int> search;
 
     {
       int *a = 0;
