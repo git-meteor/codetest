@@ -12,6 +12,7 @@
 #include "InsertionSort.h"
 #include "ShellSort.h"
 #include "MergeSort.h"
+#include "BubbleSort.h"
 
 #include "SearchRotateArray.h"
 #include "MultiplyStrings.h"
@@ -67,7 +68,8 @@ int main(int argc, char* argv[]) {
 //			new PartitionTest,
 //      new InsertionSortTest,
 //      new SortTest<QuickSort<int, Median3Selector<int>, NormalPartitioner2<int> > >,
-      new SortTest<HandWriteQuickSort2>,
+//      new SortTest<HandWriteQuickSort2>,
+      new SortTest<BubbleSort<int> >,
 
       //      new SortTest<InsertionSort<int> >,
 //      new SortTest<ShellSort<int> >,
