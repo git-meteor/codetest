@@ -1,7 +1,6 @@
 #include "Common.h"
 #include <assert.h>
 
-
 template<typename T> class ArrayDataGetter {
   const T* nums_;
 public:
@@ -56,7 +55,6 @@ public:
 
   }
 };
-
 
 template<typename T> class BinarySearch : private BinarySearchBase<T>{
 public:
