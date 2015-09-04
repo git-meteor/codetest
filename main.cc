@@ -44,10 +44,22 @@ void RedirectStdinToFile(const std::ifstream& ifs){
 }
 
 int main(int argc, char* argv[]) {
+//  std::ifstream ifs;
+//  ifs.open("test/ReverseList.txt");
+//  RedirectStdinToFile(ifs);
+//  RevertListTest();
+//  ifs.close();
+
+//  std::ifstream ifs;
+//  ifs.open("test/KthReverseList.txt");
+//  RedirectStdinToFile(ifs);
+//  KthRevertListTest();
+//  ifs.close();
+
   std::ifstream ifs;
-  ifs.open("test/ReverseList.txt");
+  ifs.open("test/ReversePartList.txt");
   RedirectStdinToFile(ifs);
-  RevertListTest();
+  ReversePartListTest();
   ifs.close();
   return 0;
 
