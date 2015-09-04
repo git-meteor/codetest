@@ -2,6 +2,9 @@
 #define COMMON_H_
 
 #include <assert.h>
+#include <iostream>
+#include <sstream>
+#include <fstream>
 
 #define ARRAY_SIZE(a) (sizeof((a))/sizeof(int))
 
@@ -173,5 +176,13 @@ public:
     return true;
   }
 };
+
+bool AssertTrue(bool expr){
+  if(expr){
+    return true;
+  } else {
+    return false;
+  }
+}
 
 #endif

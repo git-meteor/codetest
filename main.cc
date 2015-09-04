@@ -14,6 +14,7 @@
 #include "MergeSort.h"
 #include "BubbleSort.h"
 #include "HeapSort.h"
+#include "ReverseList.h"
 
 #include "SearchRotateArray.h"
 #include "MultiplyStrings.h"
@@ -35,7 +36,21 @@ int bst(int n){
   return value[n];
 }
 
+void RedirectStdinToFile(const std::ifstream& ifs){
+//  std::streambuf *backup = std::cin.rdbuf();   // back up cin's streambuf
+  std::cin.rdbuf(ifs.rdbuf()); // assign file's streambuf to cin
+//  // ... cin will read from file
+//  cin.rdbuf(backup);
+}
+
 int main(int argc, char* argv[]) {
+  std::ifstream ifs;
+  ifs.open("test/ReverseList.txt");
+  RedirectStdinToFile(ifs);
+  RevertListTest();
+  ifs.close();
+  return 0;
+
 //  Solution s;
 //  std::string str1 = "0";
 //  std::string str2 = "0";
@@ -87,5 +102,6 @@ int main(int argc, char* argv[]) {
       delete test_case;
     }
   }
+
 //	{ SearchRotateArray test; test.Test();}
 }
